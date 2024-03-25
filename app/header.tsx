@@ -5,12 +5,12 @@ import { signIn, signOut, useSession } from "next-auth/react";
 import React from "react";
 
 function Header() {
-  const session = useSession();
+  const { data: session } = useSession();
 
   return (
     <header>
       <div>
-        {session.data ? (
+        {session ? (
           <Button onClick={() => signOut()}>Sign Out</Button>
         ) : (
           <Button onClick={() => signIn("google")}>Sign In</Button>
